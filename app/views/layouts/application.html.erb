@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShoppingApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <%= javascript_importmap_tags %>
+
+    </head>
+
+  <body class="bg-gradient-to-r from-blue-400 to-blue-600 text-black">
+    <header class="p-4 bg-blue-700 rounded-b-lg shadow-lg">
+      <div class="container mx-auto px-4">
+        <h1 class="text-2xl font-bold text-center">Welcome to ShoppingApp</h1>
+      </div>
+    </header>
+
+    <main class="p-6">
+      <%= yield %>
+    </main>
+
+    <footer class="p-4 bg-blue-700 rounded-t-lg shadow-lg">
+      <div class="container mx-auto px-4">
+        <p class="text-center">&copy; 2025 ShoppingApp. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

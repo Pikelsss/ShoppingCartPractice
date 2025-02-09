@@ -1,0 +1,24 @@
+# PostgreSQL configuration for the shopping-app
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: shopping_development
+  username: Shopping
+  password: HelloRuby
+
+test:
+  <<: *default
+  database: shopping_test
+  username: Shopping
+  password: HelloRuby
+
+production:
+  <<: *default
+  database: shopping_production
+  username: Shopping
+  password: <%= ENV["SHOPPING_DATABASE_PASSWORD"] %>

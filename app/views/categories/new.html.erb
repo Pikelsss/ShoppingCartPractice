@@ -1,0 +1,19 @@
+<div class="max-w-3xl mx-auto bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 p-10 rounded-xl shadow-lg mt-12">
+  <h1 class="text-4xl font-extrabold text-gray-900 dark:text-white flex items-center gap-2 mb-8">
+    ➕ Create a New Category
+  </h1>
+
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+    <%= render "form", category: @category %>
+  </div>
+
+  <div class="mt-8 flex justify-between items-center">
+    <%= link_to "⬅️ Back to Categories", categories_path, 
+      class: "inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg 
+              font-semibold shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+
+    <%= link_to "📂 View All Products", products_path, 
+      class: "inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-3 rounded-lg 
+              font-semibold shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+  </div>
+</div>

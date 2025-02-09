@@ -1,0 +1,30 @@
+<% content_for :title, @category.name %>
+
+<div class="max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-md mt-10">
+  <h1 class="text-3xl font-bold text-gray-800 mb-4"><%= @category.name %></h1>
+
+  <p class="text-gray-600 text-lg mb-4"><%= @category.description %></p>
+
+  <% if @category.note.present? %>
+    <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6 rounded-lg">
+      <strong class="text-blue-700">Additional Notes:</strong>
+      <p class="text-gray-700 mt-1"><%= @category.note %></p>
+    </div>
+  <% end %>
+
+  <h2 class="text-2xl font-semibold text-gray-700 mt-6 mb-4">Products in this Category</h2>
+
+  <div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @category.products.each do |product| %>
+      <%= render "products/product", product: product, show_description: true %>
+    <% end %>
+  </div>
+
+  <div class="mt-8 flex space-x-4">
+    <%= link_to "✏️ Edit Category", edit_category_path(@category), 
+      class: "bg-yellow-500 text-white px-5 py-2 rounded-lg font-medium hover:bg-yellow-600 transition" %>
+
+    <%= link_to "⬅️ Back to Categories", categories_path, 
+      class: "bg-gray-600 text-white px-5 py-2 rounded-lg font-medium hover:bg-gray-700 transition" %>
+  </div>
+</div>

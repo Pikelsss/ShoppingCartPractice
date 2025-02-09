@@ -1,0 +1,8 @@
+<%= link_to category_path(category) do %>
+  <div id="<%= dom_id(category) %>">
+    <% if category.image.attached? %>
+      <%= image_tag(category.image) %>
+    <% end %>
+    <p><%= category.name %></p>
+  </div>
+<% end %>

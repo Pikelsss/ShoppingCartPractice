@@ -1,0 +1,38 @@
+<div class="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105">
+  <div class="flex justify-center mb-4">
+    <% if product.images.attached? %>
+      <%= image_tag product.images.first, alt: product.name, class: "w-48 h-48 object-contain rounded-lg border border-gray-300" %>
+    <% else %>
+      <%= image_tag "https://via.placeholder.com/150", alt: "No Image Available", class: "w-48 h-48 object-contain rounded-lg border border-gray-300" %>
+    <% end %>
+  </div>
+
+  <h3 class="text-lg font-bold text-gray-800 mb-2 hover:text-blue-600 transition-colors">
+    <%= product.name %>
+  </h3>
+
+  <% if show_description %>
+    <p class="text-gray-600 text-sm mb-2"><%= product.description %></p>
+  <% end %>
+
+  <p class="text-xl font-semibold text-blue-600 mb-2">
+    <%= number_to_currency(product.price, unit: "₱", precision: 2) %>
+  </p>
+
+  <p class="text-gray-500 text-sm">Stock: <%= product.stock_quantity %></p>
+  <p class="text-gray-500 text-sm">Category: <%= product.category&.name %></p>
+
+  <div class="mt-4 flex space-x-2">
+    <%= link_to "View", product_path(product), 
+      class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+              font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+              
+    <%= link_to "Edit", edit_product_path(product), 
+      class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+              font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+
+    <%= button_to "Delete", product_path(product), method: :delete, data: { confirm: "Are you sure?" }, 
+      class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+              font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+  </div>
+</div>

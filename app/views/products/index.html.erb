@@ -1,0 +1,59 @@
+<% content_for :title, "The Products" %>
+
+<div class="bg-gray-50 min-h-screen">
+  <div class="sticky top-0 bg-white shadow-md z-50">
+    <div class="container mx-auto max-w-7xl px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-4xl font-extrabold text-gray-900 flex items-center gap-2">
+        🛍️ The Products
+      </h1>
+
+      <div class="flex items-center gap-4 mt-4 sm:mt-0">
+        <input type="text" placeholder="Search products..." 
+          class="w-72 px-4 py-2 border border-gray-300 rounded-lg shadow-sm 
+                 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+
+        <%= link_to "📂 Browse Categories", categories_path, 
+          class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+                  font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto max-w-7xl px-6 py-10">
+    <% if notice.present? %>
+      <div class="bg-green-100 text-green-700 p-3 rounded-md mb-6 shadow-md">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div class="mb-6">
+        <p class="text-lg">Welcome, <%= current_user.email %>!</p>
+        <%= button_to "🚪 Logout", destroy_user_session_path, method: :delete, 
+          class: "bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+                  font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300",
+          data: { confirm: "Are you sure you want to logout?" } %>
+      </div>
+    <% else %>
+      <p class="text-lg">Please sign in to view and purchase products.</p>
+    <% end %>
+
+    <div class="flex justify-between items-center gap-4 mb-8">
+      <%= link_to "➕ Add Product", new_product_path, 
+        class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+                font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+
+      <%= link_to "📦 View All Cart Items", cart_path, 
+        class: "flex items-center gap-2 bg-gradient-to-r from-blue-500 to-blue-700 text-white px-4 py-2 rounded-lg text-sm 
+                font-medium shadow-md hover:shadow-lg transition-all transform hover:scale-105 focus:ring-2 focus:ring-blue-300" %>
+    </div>
+
+    <% if @products.any? %>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <%= render partial: "product", collection: @products, as: :product, locals: { show_description: false } %>
+      </div>
+    <% else %>
+      <p class="text-gray-600 text-center mt-6 text-lg">No products available. Check back later!</p>
+    <% end %>
+  </div>
+</div>

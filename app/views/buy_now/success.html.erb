@@ -1,0 +1,16 @@
+<h2>Thank you for purchasing!</h2>
+<p>All of your products will be shipped shortly.</p> 
+
+<h1><%= @purchased_cart.products.map(&:name).join(", ") %></h1>
+
+<ul>
+  <% @purchased_cart.products.each.with_index(1) do |product, index| %>
+    <li>
+      <span><%= index %></span>
+      <p><%= product.name %></p>
+      <p><%= number_to_currency product.price %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Products', products_path %>

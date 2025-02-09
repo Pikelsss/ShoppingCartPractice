@@ -1,0 +1,14 @@
+<h1>Admin Profile</h1>
+
+<p><strong>Email:</strong> <%= current_admin.email %></p>
+
+<p><strong>Joined On:</strong> <%= current_admin.created_at.strftime("%B %d, %Y") %></p>
+
+<div>
+  <%= link_to "Edit Profile", edit_admin_registration_path, class: "btn btn-warning" %>
+  <%= link_to "Back to Dashboard", admin_dashboard_path, class: "btn btn-secondary" %>
+</div>
+
+<div style="margin-top: 20px;">
+  <%= link_to "Back to Products", products_path, class: "btn btn-info" %>
+</div>

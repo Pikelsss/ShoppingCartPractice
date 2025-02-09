@@ -1,0 +1,9 @@
+<div id="add-to-cart">
+  <% if current_cart && current_cart.cart_items.where(product_id: product.id).exists? %>
+    <div>
+      Already in Cart
+    </div>
+  <% else %>
+    <%= button_to 'Add to Cart', cart_path, method: :post, params: { product_id: product.id }, class: 'btn btn-primary' %>
+  <% end %>
+</div>

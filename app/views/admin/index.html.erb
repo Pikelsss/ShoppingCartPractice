@@ -1,0 +1,22 @@
+<h1>Admin Dashboard</h1>
+
+<p>Welcome, <%= current_admin.email %>!</p>
+
+<div>
+  <h2>Manage Products</h2>
+  <%= link_to "View All Products", admin_products_path, class: "btn btn-primary" %>
+</div>
+
+<div>
+  <h2>Categories</h2>
+  <%= link_to "Manage Categories", categories_path, class: "btn btn-secondary" %>
+</div>
+
+<div>
+  <h2>Users</h2>
+  <%= link_to "View Users", users_path, class: "btn btn-success" %>
+</div>
+
+<div style="margin-top: 20px;">
+  <%= link_to "Back to Products", products_path, class: "btn btn-info" %>
+</div>
